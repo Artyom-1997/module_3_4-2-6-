@@ -1,0 +1,41 @@
+def single_root_words(root_word, *other_words):
+    same_words = []
+    # Приведение корневого слова к нижнему регистру
+    root_word_lower = root_word.lower()
+    # Объединение остальных слов в одну строку
+    other_words = ' '.join(other_words).lower()
+
+    # Разделение строки на слова
+    words = other_words.split()
+
+    for word in words:
+        if word == root_word_lower:
+            print(f'{root_word} содержит слово {word}')
+            same_words.append(word)
+        elif root_word_lower in word:
+            same_words.append(word)
+
+    print('Проверяемые слова:', words)
+    print("Проверочное слово:", root_word)
+
+    if not same_words:
+        print('Однокоренных слов не встретилось')
+    return same_words
+
+# Проверка
+root_word = 'мЕч'
+other_words = 'Мечта зАмечательно еч вода МЕЧи ме   семечка'
+single_root_words(root_word, other_words)
+print('Однокоренные слова:\n', *same_words)
+print(' ' + '~' * len(other_words))
+
+root_word = 'Доработка'
+other_words = 'Возможность ОТК бот клуб НЕДОРАБОТКА  раб'
+single_root_words(root_word, other_words)
+print('Однокоренные слова:\n', *same_words)
+print(' ' + '~' * len(other_words))
+
+print('Для самостоятельной проверки')
+root_word = input('Введите искомый корень: ')
+other_words = input('Введите строку с остальными словами: ')
+single_root_words(root_word, other_words)
